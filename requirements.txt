@@ -1,0 +1,6 @@
+streamlit
+hiplot
+numexpr
+numpy
+pandas
+matplotlib
