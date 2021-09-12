@@ -5,17 +5,17 @@ runtime: python39 # or another supported version
 # F4_1G	2048 MB	2.4 GHz
 instance_class: F2
 
-entrypoint: streamlit run --server.port $PORT main.py
+network:
+  session_affinity: true
 
-env_variables:
-  BUCKET_NAME: "example-gcs-bucket"
+  #entrypoint: find ${VIRTUAL_ENV}/lib/python3.9/site-packages/streamlit -type f \( -iname \*.py -o -iname \*.js \) -print0 | xargs -0 sed -i 's/healthz/health-check/g' && streamlit --server.port $PORT --browser.serverAddress 0.0.0.0 --server.enableCORS False --server.enableXsrfProtection False run main.py
+entrypoint: streamlit run --server.port $PORT --browser.serverAddress 0.0.0.0 --server.enableCORS False --server.enableXsrfProtection False main.py
 
-handlers:
+#handlers:
 # Matches requests to /images/... to files in static/images/...
 #- url: /images
 #  static_dir: static/images
-
-- url: /.*
-  secure: always
-  redirect_http_response_code: 301
-  script: auto
+#- url: /.*
+#  secure: always
+#  redirect_http_response_code: 301
+#  script: auto
