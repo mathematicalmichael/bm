@@ -1,20 +1,8 @@
-runtime: python39 # or another supported version
+runtime: custom
+env: flex
 
-# F2	512 MB	1.2 GHz
-# F4	1024 MB	2.4 GHz
-# F4_1G	2048 MB	2.4 GHz
 instance_class: F2
 
 network:
   session_affinity: true
 
-entrypoint: find ${VIRTUAL_ENV}/lib/python3.9/site-packages/streamlit -type f \( -iname \*.py -o -iname \*.js \) -print0 | xargs -0 sed -i 's/healthz/health-check/g' && streamlit run --server.port $PORT --browser.serverAddress 0.0.0.0 --server.enableCORS False --server.enableXsrfProtection False main.py
-
-#handlers:
-# Matches requests to /images/... to files in static/images/...
-#- url: /images
-#  static_dir: static/images
-#- url: /.*
-#  secure: always
-#  redirect_http_response_code: 301
-#  script: auto
