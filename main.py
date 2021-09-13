@@ -11,13 +11,15 @@ from matplotlib import pyplot as plt
 
 # from scipy.stats import gaussian_kde as gkde
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="The Oracle", page_icon=":crystal_ball:")
 
 hide_streamlit_style = """
 <style>
 .css-1y0tads {padding-top: 0rem;}
+.css-r698ls {visibility: hidden;}
+footer {visibility: hidden;}
+#MainMenu {visibility: hidden;}
 </style>
-
 """
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
