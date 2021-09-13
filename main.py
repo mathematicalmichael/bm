@@ -11,6 +11,16 @@ from matplotlib import pyplot as plt
 
 # from scipy.stats import gaussian_kde as gkde
 
+st.set_page_config(layout="wide")
+
+hide_streamlit_style = """
+<style>
+.css-1y0tads {padding-top: 0rem;}
+</style>
+
+"""
+
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 RESERVED_MATH = ["exp", "pi", "e", "tan", "cos", "sin", "sinh", "tanh", "cosh"]
 RESERVED_ST = [
@@ -19,7 +29,6 @@ RESERVED_ST = [
     "data",
 ]  # THIS IS A VERY IMPORTANT LINE FOR LOADING SESSION STATE FROM DISK
 
-st.set_page_config(layout="wide")
 s = st.session_state
 
 if "eq" not in s:
